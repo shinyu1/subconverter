@@ -29,12 +29,12 @@ RUN apk add --no-cache --virtual .build-tools git g++ build-base linux-headers c
     install -d /usr/include/date/ && \
     install -m644 libcron/externals/date/include/date/* /usr/include/date/ && \
     cd .. && \
-    git clone https://github.com/ToruNiina/toml11 --depth=1 && \
+    git clone https://github.com/ToruNiina/toml11 --branch v3.7.1 --depth=1 && \
     cd toml11 && \
     cmake -DCMAKE_CXX_STANDARD=11 . && \
     make install -j $THREADS && \
     cd .. && \
-    git clone https://github.com/tindy2013/subconverter --depth=1 && \
+    git clone https://github.com/MetaCubeX/subconverter --depth=1 && \
     cd subconverter && \
     [ -n "$SHA" ] && sed -i 's/\(v[0-9]\.[0-9]\.[0-9]\)/\1-'"$SHA"'/' src/version.h;\
     cmake -DCMAKE_BUILD_TYPE=Release . && \
